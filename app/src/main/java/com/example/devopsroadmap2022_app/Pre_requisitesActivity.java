@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,13 +20,16 @@ public class Pre_requisitesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_requisites);
 
+        setTitle("Pre-requisites");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         ListView myListview = findViewById(R.id.prerequisiteList);
         ArrayList<String> topicsList = new ArrayList<>();
         topicsList.add("1. Linux OS");
         topicsList.add("2. Basic Networking");
         topicsList.add("3. YAML");
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, topicsList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.prerequisite_cutom_layout, topicsList);
         myListview.setAdapter(arrayAdapter);
 
         myListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -41,5 +46,21 @@ public class Pre_requisitesActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }

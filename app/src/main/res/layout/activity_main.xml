@@ -8,6 +8,8 @@
 
     <ListView
         android:id="@+id/topics"
+        android:scrollbars="none"
+        android:overScrollMode="never"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

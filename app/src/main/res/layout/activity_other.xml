@@ -18,6 +18,9 @@
 
         <ListView
             android:id="@+id/others"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:listSelector="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

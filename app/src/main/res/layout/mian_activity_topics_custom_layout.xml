@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainActivityTopics"
+    android:text="exp"
+    android:textSize="26sp"
+    android:textColor="#09A141"
+    android:textStyle="bold"
+    android:padding="18dp"
+    android:fontFamily="serif-monospace"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+</TextView>

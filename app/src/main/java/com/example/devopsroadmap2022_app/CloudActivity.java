@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,33 +20,44 @@ public class CloudActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cloud);
+        setTitle("Cloud");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ListView myListview = findViewById(R.id.cloud);
         ArrayList<String> topicsList = new ArrayList<>();
-        topicsList.add("1. Become familiar with:\n");
-        topicsList.add("Infrastructure as a Servide(IAAS)\n");
-        topicsList.add("Software as a Servide(SAAS)\n");
-        topicsList.add("Platform as a Servide(PAAS)\n");
-        topicsList.add("What is a Cloud and Data Centre\n");
-        topicsList.add("What are the benfits of cloud\n");
-        topicsList.add("Cloud Service Providers (eg. GCP, AWS, Azure, Oracle, Civo)\n");
-        topicsList.add("Base Terminologies like:- Network, Storage, Compute, IAM, Billing\n");
+        topicsList.add("\nBecome familiar with:\n");
+        topicsList.add("\n1. Infrastructure as a Servide(IAAS)\n\n2. Software as a Servide(SAAS)\n\n3. Platform as a Servide(PAAS)\n\n4. What is a Cloud and Data Centre\n\n5. What are the benfits of cloud\n\n6. Cloud Service Providers (eg. GCP, AWS, Azure, Oracle, Civo)\n\n7. Base Terminologies like:- Network, Storage, Compute, IAM, Billing\n\n");
         topicsList.add("\nNOTE :: We have to learn AWS first\n\n");
-        topicsList.add("2. Resources:\n(sirf Aws ka link diya hai...baaki ka bad mein dhund lenge)");
-        topicsList.add("AWS cloud practitioner (freecodecamp)");
+        topicsList.add("\nResources:\n(sirf Aws ka link diya hai...baaki ka bad mein dhund lenge)");
+        topicsList.add("1. AWS cloud practitioner (freecodecamp)");
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, topicsList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.content_custom_layout, topicsList);
         myListview.setAdapter(arrayAdapter);
 
         myListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i==10){
+                if (i==4){
                     Uri uri = Uri.parse( "https://youtu.be/SOTamWNgDKc" );
                     startActivity(new Intent(Intent.ACTION_VIEW, uri));
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }
 

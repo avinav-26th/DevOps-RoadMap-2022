@@ -19,6 +19,8 @@
         <ListView
             android:id="@+id/service"
             android:layout_width="match_parent"
+            android:scrollbars="none"
+            android:overScrollMode="never"
             android:layout_height="wrap_content" />
     </LinearLayout>
 

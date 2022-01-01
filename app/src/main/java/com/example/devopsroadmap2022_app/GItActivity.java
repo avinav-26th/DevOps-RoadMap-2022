@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,15 +20,17 @@ public class GItActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_git);
+        setTitle("Git and GitHub");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ListView myListview = findViewById(R.id.git);
         ArrayList<String> topicsList = new ArrayList<>();
-        topicsList.add("1. Resources:\n");
-        topicsList.add("Complete Git and GitHub Tutorial (Kunal Kushwaha)");
-        topicsList.add("Git and GitHub crash course (freecodecamp)");
-        topicsList.add("Git for Professionals (freecodecamp)");
+        topicsList.add("\nResources:\n");
+        topicsList.add("1. Complete Git and GitHub Tutorial (Kunal Kushwaha)");
+        topicsList.add("2. Git and GitHub crash course (freecodecamp)");
+        topicsList.add("3. Git for Professionals (freecodecamp)");
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, topicsList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.content_custom_layout, topicsList);
         myListview.setAdapter(arrayAdapter);
 
         myListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,5 +60,20 @@ public class GItActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }
